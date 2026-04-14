@@ -15,6 +15,14 @@ df = pd.read_csv("sales_data.csv")
 st.subheader("Product Sales Data")
 st.dataframe(df)
 
+st.subheader("Sales Distribution")
+st.bar_chart(df["purchases"])
+
+st.subheader("Views vs Purchases")
+st.scatter_chart(df[["views", "purchases"]])
+
+st.write("This model learns patterns from product data such as views, price, rating, and stock to predict sales performance.")
+
 # Create target column
 df["high_selling"] = df["purchases"].apply(lambda x: 1 if x >= 70 else 0)
 
